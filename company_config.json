@@ -1,0 +1,70 @@
+{
+  "_comment": "AegisRecon AI — Company & Branding Configuration",
+  "_note": "Edit this file to customize reports, branding, and contact info",
+
+  "company": {
+    "name": "AegisRecon AI",
+    "tagline": "Intelligent Hybrid Vulnerability Scanner",
+    "logo_filename": "logo.png",
+    "website": "https://aegisrecon.local",
+    "email": "security@aegisrecon.local",
+    "phone": "+92-XXX-XXXXXXX",
+    "address": "Lahore, Punjab, Pakistan"
+  },
+
+  "report": {
+    "prepared_by": "AegisRecon AI Security Engine",
+    "disclaimer_en": "This report is generated for authorized security assessment purposes only. Unauthorized use is prohibited under PECA 2016. All findings are based on passive and active reconnaissance at the time of scanning.",
+    "disclaimer_ur": "یہ رپورٹ صرف مجاز سیکیورٹی تشخیص کے مقاصد کے لیے تیار کی گئی ہے۔ غیر مجاز استعمال PECA 2016 کے تحت ممنوع ہے۔",
+    "confidentiality_notice": "CONFIDENTIAL — For Authorized Personnel Only",
+    "watermark_text": "AegisRecon AI — Confidential"
+  },
+
+  "risk_labels": {
+    "en": {
+      "critical": "Critical",
+      "high": "High",
+      "medium": "Medium",
+      "low": "Low",
+      "info": "Informational"
+    },
+    "ur": {
+      "critical": "انتہائی خطرناک",
+      "high": "زیادہ خطرناک",
+      "medium": "درمیانہ خطرہ",
+      "low": "کم خطرہ",
+      "info": "معلوماتی"
+    }
+  },
+
+  "peca_context": {
+    "act_name": "Prevention of Electronic Crimes Act (PECA) 2016",
+    "jurisdiction": "Pakistan",
+    "currency": "PKR",
+    "currency_symbol": "₨",
+    "reference_url": "https://moitt.gov.pk/SiteImage/Misc/files/PECA%202016.pdf"
+  },
+
+  "scan_defaults": {
+    "passive_modules": [
+      "whois",
+      "dns",
+      "crtsh",
+      "wayback",
+      "wappalyzer_passive"
+    ],
+    "active_modules": [
+      "nmap",
+      "http_headers",
+      "ssl_check",
+      "version_vuln"
+    ],
+    "default_scan_type": "hybrid"
+  },
+
+  "notifications": {
+    "show_peca_warning": true,
+    "show_ai_disclaimer": true,
+    "show_scope_reminder": true
+  }
+}

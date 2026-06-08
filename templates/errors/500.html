@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}500 Error{% endblock %}
+{% block content %}
+<div class="text-center py-5">
+  <div style="font-family:var(--aegis-mono); font-size:5rem; color:var(--aegis-red); opacity:0.4;">500</div>
+  <h5 style="color:var(--aegis-muted);">Internal Server Error</h5>
+  <a href="{{ url_for('index') }}" style="color:var(--aegis-cyan);">← Back to Dashboard</a>
+</div>
+{% endblock %}

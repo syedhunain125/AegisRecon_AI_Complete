@@ -1,0 +1,53 @@
+# ============================================================
+# AegisRecon AI — requirements.txt
+# All packages are free and open-source.
+# Install with: pip install -r requirements.txt
+# ============================================================
+
+# --- Web Framework ---
+Flask==3.0.3
+Flask-SQLAlchemy==3.1.1
+Flask-Migrate==4.0.7
+Werkzeug==3.0.3
+
+# --- Database ---
+SQLAlchemy==2.0.30
+
+# --- HTTP & Networking ---
+requests==2.32.3
+urllib3==2.2.1
+
+# --- DNS & WHOIS ---
+dnspython==2.6.1
+python-whois==0.9.4
+
+# --- SSL / TLS ---
+pyOpenSSL==24.1.0
+cryptography==42.0.8
+
+# --- Port Scanning (Nmap wrapper) ---
+python-nmap==0.7.1
+
+# --- HTML Parsing ---
+beautifulsoup4==4.12.3
+lxml==5.2.2
+
+# --- PDF Generation ---
+reportlab==4.2.0
+Pillow==10.3.0
+
+# --- Data & Utilities ---
+python-dateutil==2.9.0
+validators==0.28.3
+tldextract==5.1.2
+colorama==0.4.6
+
+# --- Templating (bundled with Flask, listed for clarity) ---
+Jinja2==3.1.4
+MarkupSafe==2.1.5
+
+# --- AI (Ollama local LLM — optional) ---
+ollama==0.2.1
+
+# --- Environment Management ---
+python-dotenv==1.0.1

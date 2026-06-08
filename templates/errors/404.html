@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}404 Not Found{% endblock %}
+{% block content %}
+<div class="text-center py-5">
+  <div style="font-family:var(--aegis-mono); font-size:5rem; color:var(--aegis-border);">404</div>
+  <h5 style="color:var(--aegis-muted);">Page not found</h5>
+  <a href="{{ url_for('index') }}" style="color:var(--aegis-cyan);">← Back to Dashboard</a>
+</div>
+{% endblock %}

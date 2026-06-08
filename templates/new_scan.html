@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block title %}New Scan{% endblock %}
+{% block breadcrumb %}/ New Scan{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-7">
+
+    <!-- Header -->
+    <div class="mb-4">
+      <h4 style="font-family:var(--aegis-mono); color:var(--aegis-cyan)">
+        <i class="bi bi-radar me-2"></i>Launch Scan
+      </h4>
+      <p style="color:var(--aegis-muted); font-size:0.85rem;">
+        Enter a domain or IP address. Ensure you have written authorization before scanning any target.
+      </p>
+    </div>
+
+    <!-- PECA Warning -->
+    <div class="alert-aegis warning mb-4">
+      <i class="bi bi-shield-exclamation me-2"></i>
+      <strong>PECA 2016 Notice:</strong> Unauthorized scanning is illegal under Pakistan's Prevention of Electronic Crimes Act.
+      Only scan systems you own or have explicit written permission to test.
+    </div>
+
+    <!-- Scan Form -->
+    <div class="card-aegis p-4">
+      <form method="POST" action="{{ url_for('scan_bp.new_scan') }}">
+
+        <!-- Target -->
+        <div class="mb-4">
+          <label class="form-label-aegis">Target Domain or IP Address</label>
+          <input
+            type="text"
+            name="target"
+            class="form-control-aegis w-100"
+            placeholder="e.g. example.com or 192.168.1.1"
+            required
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <div style="font-size:0.72rem; color:var(--aegis-muted); margin-top:0.4rem;">
+            Supports: domains, subdomains, IPv4 addresses
+          </div>
+        </div>
+
+        <!-- Scan Type -->
+        <div class="mb-4">
+          <label class="form-label-aegis">Scan Mode</label>
+          <div class="row g-2 mt-1">
+
+            <div class="col-md-4">
+              <label style="cursor:pointer; display:block;">
+                <input type="radio" name="scan_type" value="passive" class="d-none scan-radio" />
+                <div class="scan-mode-card p-3" style="border:1px solid var(--aegis-border); border-radius:7px; transition:0.2s;">
+                  <div style="color:var(--aegis-cyan); font-size:1.3rem; margin-bottom:0.4rem;"><i class="bi bi-eye"></i></div>
+                  <div style="font-weight:700; font-size:0.82rem; font-family:var(--aegis-mono);">Passive</div>
+                  <div style="font-size:0.72rem; color:var(--aegis-muted); margin-top:0.2rem;">WHOIS, DNS, crt.sh, Wayback</div>
+                </div>
+              </label>
+            </div>
+
+            <div class="col-md-4">
+              <label style="cursor:pointer; display:block;">
+                <input type="radio" name="scan_type" value="active" class="d-none scan-radio" />
+                <div class="scan-mode-card p-3" style="border:1px solid var(--aegis-border); border-radius:7px; transition:0.2s;">
+                  <div style="color:var(--aegis-orange); font-size:1.3rem; margin-bottom:0.4rem;"><i class="bi bi-crosshair2"></i></div>
+                  <div style="font-weight:700; font-size:0.82rem; font-family:var(--aegis-mono);">Active</div>
+                  <div style="font-size:0.72rem; color:var(--aegis-muted); margin-top:0.2rem;">Nmap, Headers, SSL, CVEs</div>
+                </div>
+              </label>
+            </div>
+
+            <div class="col-md-4">
+              <label style="cursor:pointer; display:block;">
+                <input type="radio" name="scan_type" value="hybrid" class="d-none scan-radio" checked />
+                <div class="scan-mode-card selected p-3" style="border:1px solid var(--aegis-cyan); border-radius:7px; background:rgba(0,229,255,0.05); transition:0.2s;">
+                  <div style="color:var(--aegis-green); font-size:1.3rem; margin-bottom:0.4rem;"><i class="bi bi-activity"></i></div>
+                  <div style="font-weight:700; font-size:0.82rem; font-family:var(--aegis-mono);">Hybrid <span style="font-size:0.65rem; background:rgba(0,229,255,0.15); color:var(--aegis-cyan); padding:0.1em 0.4em; border-radius:3px;">Recommended</span></div>
+                  <div style="font-size:0.72rem; color:var(--aegis-muted); margin-top:0.2rem;">Full passive + active scan</div>
+                </div>
+              </label>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <div class="d-flex gap-3 align-items-center mt-3">
+          <button type="submit" class="btn-aegis-primary">
+            <i class="bi bi-play-fill me-1"></i> Launch Scan
+          </button>
+          <a href="{{ url_for('index') }}" style="font-size:0.82rem; color:var(--aegis-muted); text-decoration:none;">Cancel</a>
+        </div>
+
+      </form>
+    </div>
+
+  </div>
+</div>
+
+<style>
+  .scan-mode-card:hover { border-color: var(--aegis-muted) !important; background: rgba(255,255,255,0.03) !important; }
+</style>
+
+<script>
+  // Highlight selected scan mode card
+  document.querySelectorAll('.scan-radio').forEach(radio => {
+    radio.addEventListener('change', () => {
+      document.querySelectorAll('.scan-mode-card').forEach(card => {
+        card.style.borderColor = 'var(--aegis-border)';
+        card.style.background  = 'transparent';
+      });
+      const selected = radio.nextElementSibling;
+      selected.style.borderColor = 'var(--aegis-cyan)';
+      selected.style.background  = 'rgba(0,229,255,0.05)';
+    });
+  });
+</script>
+{% endblock %}
